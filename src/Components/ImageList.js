@@ -6,7 +6,7 @@ class ImageList extends Component {
     return (
       <div className='image-list'>
         {this.props.images.map(image =>
-          <RenderImage image={image} />
+          <RenderImage key={image.id} image={image} />
         )}
       </div>
     )

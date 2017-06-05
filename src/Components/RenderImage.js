@@ -1,9 +1,12 @@
 import React from 'react';
 
 const RenderImage = (props) => {
+  console.log(props);
   return (
     <div className='image'>
-      <img src={props.url} alt={props.name}></img>
+      <a href='#' key={props.image.id}>
+        <img src={props.image.url} alt={props.image.name} width="1080" />
+      </a>
     </div>
 
   )
