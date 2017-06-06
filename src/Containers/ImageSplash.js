@@ -3,6 +3,8 @@ import fetch from 'isomorphic-fetch';
 
 import ImageList from '../Components/ImageList'
 
+const page = process.env.REACT_APP_API_URL
+
 class ImageSplash extends Component {
   constructor() {
     super();
@@ -13,7 +15,7 @@ class ImageSplash extends Component {
   }
 
   componentWillMount() {
-    fetch('http://localhost:3001/images')
+    fetch(`${page}/images`)
       .then(res => res.json())
       .then((response) => this.setState({
         images: response

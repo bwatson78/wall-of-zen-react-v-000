@@ -1,7 +1,6 @@
 import React from 'react';
 
 const RenderImage = (props) => {
-  console.log(props);
   return (
     <div className='image'>
       <a href='image' key={props.image.id}>
