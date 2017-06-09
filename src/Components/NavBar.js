@@ -7,6 +7,7 @@ const NavBar = () => {
       <ul>
         <li><Link to="/">Wall</Link></li>
         <li><Link to='/search'>Search For Images</Link></li>
+        <li><Link to='/tags'>Tags</Link></li>
       </ul>
     </div>
   )
