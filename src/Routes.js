@@ -6,7 +6,7 @@ import ImageSplash from './Containers/ImageSplash'
 import GoogSearch from './Containers/GoogSearch'
 import TagSplash from './Containers/TagSplash'
 
-export default (
+export const getRoutes = (store) => (
   <Route path="/" component={App} >
     <IndexRoute component={ImageSplash}/>
     <Route path="/search" component={GoogSearch}/>

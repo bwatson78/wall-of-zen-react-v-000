@@ -1,4 +1,4 @@
-export default function nativeImageReducers(state= {images: [], tags: [], currentTag: null}, action) {
+export default function nativeImage(state= {images: [], tags: [], currentTag: null}, action) {
   switch (action.type) {
     case 'LOADING_IMAGES':
       return Object.assign({}, state)
