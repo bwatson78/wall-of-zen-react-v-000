@@ -7,7 +7,7 @@ import GoogSearch from './Containers/GoogSearch'
 import TagSplash from './Containers/TagSplash'
 
 export const getRoutes = (store) => (
-  <Route path="/" component={App} >
+  <Route path="/" component={App} store={store}>
     <IndexRoute component={ImageSplash}/>
     <Route path="/search" component={GoogSearch}/>
     <Route path="/tags" component={TagSplash}/>
