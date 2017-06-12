@@ -31,7 +31,7 @@ class App extends Component {
 
 export default connect(
   state => ({
-    state: state.nativeImage
+    nativeImage: state.nativeImage
   }), {
     receiveImagesAndTags
   }
