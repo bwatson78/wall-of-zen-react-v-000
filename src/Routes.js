@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
-import App from './Components/App';
+import App from './Containers/App';
 import ImageSplash from './Containers/ImageSplash'
 import GoogSearch from './Containers/GoogSearch'
 import TagSplash from './Containers/TagSplash'

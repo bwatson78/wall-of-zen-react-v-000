@@ -1,8 +1,15 @@
-function receiveImagesAndTags(json) {
+export const receiveImagesAndTags = json => {
   return {
     type: 'RECEIVE_IMAGES_AND_TAGS',
     images: json,
     tags: uniqueTags(json)
+  }
+}
+
+export const changeCurrentTag = tag => {
+  return {
+    type: 'CHANGE_CURRENT_TAG',
+    currentTag: tag
   }
 }
 

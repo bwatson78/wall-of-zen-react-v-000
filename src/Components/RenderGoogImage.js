@@ -2,20 +2,13 @@ import React, {Component} from 'react';
 import fetch from 'isomorphic-fetch';
 import Modal from 'react-modal';
 import AlertContainer from 'react-alert';
+import {connect} from 'react-redux';
+
+import {processTagChange, processOpenModal, processCloseModal} from '../actions/googImageActions'
 
 const page = process.env.REACT_APP_API_URL
 
 class RenderGoogImage extends Component {
-  constructor() {
-    super();
-    this.state = {
-      isModalOpen: false,
-      tagText: ''
-    };
-
-    this.showAlert = this.showAlert.bind(this);
-  }
-
   alertOptions = {
     offset: 14,
     position: 'center',
@@ -23,7 +16,7 @@ class RenderGoogImage extends Component {
     transition: 'scale'
   }
 
-  showAlert = () => {
+  showAlert = (event) => {
     this.msg.show('Image Added!', {
       time: 10000,
       type: 'success',
@@ -31,6 +24,7 @@ class RenderGoogImage extends Component {
   }
 
   processSubmit(event) {
+    debugger
     event.preventDefault();
     fetch(`${page}/images`, {
       method: 'post',
@@ -41,24 +35,24 @@ class RenderGoogImage extends Component {
       body: JSON.stringify({
         url: this.props.image.link,
         name: this.props.image.title,
-        tags_attributes: {tag_name: this.state.tagText.split(' ')}
+        tags_attributes: {tag_name: this.props.googImage.tagText.split(' ')}
       })
     }
-  ).then(this.showAlert)
+  ).then(event => this.showAlert(event))
   .then(this.closeModal(event))
 }
 
   processChange(event) {
-    this.setState({tagText: event.target.value})
+    this.props.processTagChange(event.target.value)
   }
 
   openModal(event) {
-    this.setState({isModalOpen: true})
+    this.props.processOpenModal()
   }
 
   closeModal(event) {
     event.preventDefault();
-    this.setState({isModalOpen: false})
+    this.props.processCloseModal()
   }
 
   render() {
@@ -70,9 +64,11 @@ class RenderGoogImage extends Component {
           alt={this.props.image.title}
           onClick={(event) => this.openModal(event)}
           width="270" />
+
         <Modal
-          isOpen={this.state.isModalOpen}
-          contentLabel="Modal">
+          isOpen={this.props.googImage.isModalOpen}
+          contentLabel="Modal"
+        >
           <h1>You clicked on {this.props.image.title}!</h1>
           <p>Add tags below and click submit when done!</p>
           <form onSubmit={(event) => this.processSubmit(event)}>
@@ -92,4 +88,11 @@ class RenderGoogImage extends Component {
   }
 }
 
-export default RenderGoogImage;
+export default connect(
+  state => ({googImage: state.googImage}),
+  {
+    processTagChange,
+    processOpenModal,
+    processCloseModal
+  }
+)(RenderGoogImage);

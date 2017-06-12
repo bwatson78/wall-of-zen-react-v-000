@@ -1,8 +1,8 @@
 import React from 'react';
 
 const Filter = (props) => {
-    return (
-      <select onChange={props.updateCurrentTag} defaultValue='all'>
+  return (
+      <select onChange={event => props.changeCurrentTag(event.target.value)} defaultValue='all'>
         <option value='all'>All</option>
         {props.tags.map(tag =>
           <option key={tag} value={tag}>{tag}</option>
@@ -12,7 +12,7 @@ const Filter = (props) => {
   }
   Filter.defaultProps = {
     tags: [],
-    updateCurrentTag: function() {}
+    changeCurrentTag: function() {}
   };
 
 export default Filter;

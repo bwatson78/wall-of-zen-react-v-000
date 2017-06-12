@@ -4,8 +4,10 @@ export default function nativeImage(state= {
   currentTag: null
 }, action) {
   switch (action.type) {
-    case 'REQUEST_ALL':
-      return Object.assign({}, state)
+    case 'CHANGE_CURRENT_TAG':
+      return Object.assign({}, state, {
+        currentTag: action.currentTag
+      })
     case 'RECEIVE_IMAGES_AND_TAGS':
       return Object.assign({}, state, {
         images: action.images,

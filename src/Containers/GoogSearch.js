@@ -1,34 +1,27 @@
 import fetch from 'isomorphic-fetch';
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+
 import GoogImageList from '../Components/GoogImageList'
+import {receiveGoogImages} from '../actions/googImageActions'
+import {processSearchText} from '../actions/googImageActions'
 
 const googKey = process.env.REACT_APP_GOOG_KEY
 const googCX = process.env.REACT_APP_GOOG_CX
 
 class GoogSearch extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      searchText: "",
-      searchImages: []
-    };
-  }
 
   processSubmit(event) {
     event.preventDefault();
-    fetch(`https://www.googleapis.com/customsearch/v1?q=${this.state.searchText}&key=${googKey}&cx=${googCX}&searchType=image`)
+    fetch(`https://www.googleapis.com/customsearch/v1?q=${this.props.googImage.searchText}&key=${googKey}&cx=${googCX}&searchType=image`)
       .then(res => res.json())
-      .then((response) => this.setState({
-        searchImages: response.items
-      }))
+      .then((response) => this.props.receiveGoogImages(response))
   }
 
   processChange(event) {
-    this.setState({
-      searchText: event.target.value,
-    })
+    this.props.processSearchText(event.target.value)
   }
+
 
   render() {
     return (
@@ -36,14 +29,20 @@ class GoogSearch extends Component {
         <form onSubmit={(event) => this.processSubmit(event)}>
           <input
             type='text'
-            value={this.state.searchText}
+            value={this.props.googImage.searchText}
             placeholder="Enter Search Value Here"
             onChange={(event) => this.processChange(event)}/>
         </form>
-        <GoogImageList images={this.state.searchImages} />
+        <GoogImageList images={this.props.googImage.searchImages.items} />
       </div>
     )
   }
 }
 
-export default GoogSearch;
+export default connect(
+  state => ({googImage: state.googImage}),
+  {
+    receiveGoogImages,
+    processSearchText
+  }
+)(GoogSearch);

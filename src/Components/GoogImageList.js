@@ -16,8 +16,10 @@ class GoogImageList extends Component {
   render() {
     return (
       <div key="list" className='google-image-list'>
-        {this.props.images.map(image =>
-          <RenderGoogImage key={image.cacheId} image={image} />)}
+        {this.props.images ?
+          this.props.images.map(image =>
+            <RenderGoogImage key={image.cacheId} image={image} />)
+         : null}
       </div>
     )
   }

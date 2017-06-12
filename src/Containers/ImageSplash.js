@@ -1,30 +1,15 @@
 import React, { Component } from 'react';
-import fetch from 'isomorphic-fetch';
+import {connect} from 'react-redux'
 
 import ImageList from '../Components/ImageList'
 
 export class ImageSplash extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      images: []
-    }
-  }
-
-  componentWillMount() {
-    const page = process.env.REACT_APP_API_URL
-    fetch(`${page}/images`)
-      .then(res => {return res.json()})
-      .then(response => {
-        this.setState({images: response});
-    });
-
-  }
 
   render() {
-    return <ImageList images={this.state.images} />
+    return <ImageList images={this.props.state.images} />
   }
 }
 
-export default ImageSplash;
+export default connect(
+  state => ({state: state.nativeImage})
+)(ImageSplash);

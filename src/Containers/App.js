@@ -12,7 +12,7 @@ class App extends Component {
     const page = process.env.REACT_APP_API_URL
     fetch(`${page}/images`)
       .then(res => res.json())
-      .then(response => receiveImagesAndTags(response))
+      .then(response => this.props.receiveImagesAndTags(response))
   }
 
   render () {
@@ -30,9 +30,8 @@ class App extends Component {
 }
 
 export default connect(
-  state => ({
-    nativeImage: state.nativeImage
-  }), {
+  null,
+  {
     receiveImagesAndTags
   }
   )(App);
