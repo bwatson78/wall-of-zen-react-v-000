@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux';
-import nativeImageReducers from './nativeImageReducers'
+import nativeImage from './nativeImageReducers'
 
 const rootReducer = combineReducers({
-  images: nativeImageReducers
+  nativeImage
 })
 
 export default rootReducer;

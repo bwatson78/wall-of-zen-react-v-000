@@ -1,11 +1,11 @@
 import {createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
-import nativeImage from '../reducers/nativeImageReducers'
+import rootReducer from '../reducers/index'
 
 const middlewares = [thunk];
 
 export default createStore(
-  nativeImage,
+  rootReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   applyMiddleware(...middlewares)
 )

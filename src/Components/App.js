@@ -2,18 +2,17 @@ import React, {Component} from 'react';
 import './App.css';
 import NavBar from './NavBar';
 import {connect} from 'react-redux';
+import 'isomorphic-fetch';
 
-import { fetchImagesAndTags } from '../actions/nativeImageActions';
+import {receiveImagesAndTags} from '../actions/nativeImageActions';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
 
-    // this.state = this.store.getState();
-  }
-
-  componentWillMount() {
-    // this.props.dispatch(fetchImagesAndTags)
+  componentDidMount() {
+    const page = process.env.REACT_APP_API_URL
+    fetch(`${page}/images`)
+      .then(res => res.json())
+      .then(response => receiveImagesAndTags(response))
   }
 
   render () {
@@ -30,10 +29,10 @@ class App extends Component {
 
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch
+export default connect(
+  state => ({
+    state: state.nativeImage
+  }), {
+    receiveImagesAndTags
   }
-}
-
-export default connect(mapDispatchToProps, { fetchImagesAndTags })(App);
+  )(App);

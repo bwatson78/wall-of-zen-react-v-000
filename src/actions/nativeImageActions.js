@@ -1,16 +1,3 @@
-import fetch from 'isomorphic-fetch';
-const page = process.env.REACT_APP_API_URL
-
-function fetchImagesAndTags() {
-  return dispatch => {
-    return fetch(`${page}/images`)
-      .then(res => res.json())
-      .then(response => {
-        dispatch(receiveImagesAndTags(response))
-      })
-  }
-}
-
 function receiveImagesAndTags(json) {
   return {
     type: 'RECEIVE_IMAGES_AND_TAGS',
