@@ -13,6 +13,15 @@ export const changeCurrentTag = tag => {
   }
 }
 
+export const addImageToState = ({url, name, tag_name}) => {
+  return {
+    type: 'ADD_IMAGE_TO_STATE',
+    url: url,
+    name: name,
+    tag_name: tag_name
+  }
+}
+
 function uniqueTags(array) {
   const bareTags = array.map(image =>
     image.tags);

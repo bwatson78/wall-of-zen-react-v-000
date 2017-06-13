@@ -8,3 +8,11 @@
   padding: 20px;
   color: white;
 }
+
+.google-image-for-adding {
+  background-color: grey;
+  border-color: blue;
+  border-width: medium;
+  width: 400px;
+  margin: 0 auto;
+}

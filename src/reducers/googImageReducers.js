@@ -1,7 +1,6 @@
 export default function googImage(state= {
   searchText: "",
   searchImages: [],
-  isModalOpen: false,
   tagText: ''
 }, action) {
   switch (action.type) {
@@ -16,14 +15,6 @@ export default function googImage(state= {
     case 'PROCESS_TAG_CHANGE':
       return Object.assign({}, state, {
         tagText: action.tagText
-      })
-    case 'PROCESS_OPEN_MODAL':
-      return Object.assign({}, state, {
-        isModalOpen: action.isModalOpen
-      })
-    case 'PROCESS_CLOSE_MODAL':
-      return Object.assign({}, state, {
-        isModalOpen: action.isModalOpen
       })
     default:
       return state;

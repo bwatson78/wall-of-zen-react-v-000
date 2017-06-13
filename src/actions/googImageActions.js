@@ -1,7 +1,9 @@
 export const receiveGoogImages = json => {
+  const interArray = json.items.map((image, index) =>
+    (JSON.parse(`{"id": "${index}", "link": "${image.link}", "title": "${image.title}"}`)));
   return {
     type: 'RECEIVE_GOOG_IMAGES',
-    searchImages: json
+    searchImages: interArray
   }
 }
 
@@ -16,19 +18,5 @@ export const processTagChange = text => {
   return {
     type: 'PROCESS_TAG_CHANGE',
     tagText: text
-  }
-}
-
-export const processOpenModal = () => {
-  return {
-    type: 'PROCESS_OPEN_MODAL',
-    isModalOpen: true
-  }
-}
-
-export const processCloseModal = () => {
-  return {
-    type: 'PROCESS_CLOSE_MODAL',
-    isModalOpen: false
   }
 }

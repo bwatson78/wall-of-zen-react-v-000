@@ -2,6 +2,7 @@ import fetch from 'isomorphic-fetch';
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
+
 import GoogImageList from '../Components/GoogImageList'
 import {receiveGoogImages} from '../actions/googImageActions'
 import {processSearchText} from '../actions/googImageActions'
@@ -33,11 +34,12 @@ class GoogSearch extends Component {
             placeholder="Enter Search Value Here"
             onChange={(event) => this.processChange(event)}/>
         </form>
-        <GoogImageList images={this.props.googImage.searchImages.items} />
+        {this.props.children}
+        <GoogImageList images={this.props.googImage.searchImages} />
       </div>
-    )
+    );
   }
-}
+};
 
 export default connect(
   state => ({googImage: state.googImage}),

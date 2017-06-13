@@ -10,16 +10,21 @@
 // "htmlFormattedUrl": "bloody-disgusting.com/.../hidden-treat-on-original-<b>halloween</b>-<b>poster</b>/",
 import React, {Component} from 'react';
 import RenderGoogImage from './RenderGoogImage';
+import {Link} from 'react-router';
 
 class GoogImageList extends Component {
 
   render() {
     return (
       <div key="list" className='google-image-list'>
+        <ul>
         {this.props.images ?
-          this.props.images.map(image =>
-            <RenderGoogImage key={image.cacheId} image={image} />)
+          this.props.images.map((image, index) =>
+            <Link to={`/search/${image.id}`}>
+                <RenderGoogImage key={image.id} image={image} />
+            </Link>)
          : null}
+         </ul>
       </div>
     )
   }
