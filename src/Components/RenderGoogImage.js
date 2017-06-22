@@ -15,7 +15,6 @@ class RenderGoogImage extends Component {
           key={this.props.image.title}
           src={this.props.image.link}
           alt={this.props.image.title}
-          width="270"
           />
       </div>
     )

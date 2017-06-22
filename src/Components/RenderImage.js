@@ -1,12 +1,26 @@
-import React from 'react';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
-const RenderImage = (props) => {
-  return (
-    <div className='image'>
-      <img src={props.image.url} alt={props.image.name} width="1080" />
-    </div>
+import {upvoteImage} from '../actions/nativeImageActions'
 
-  )
+class RenderImage extends Component {
+
+  render() {
+    return (
+      <div className='image'>
+        <img key={this.props.id} src={this.props.image.url} alt={this.props.image.name} width="1080" />
+        <p>{this.props.image.votecount}</p>
+        <button onClick={event => this.props.upvoteImage(this.props.image.id, event)}>Upvote!</button>
+      </div>
+
+    )
+  }
+
 }
 
-export default RenderImage;
+export default connect(
+  null,
+  {
+    upvoteImage
+  }
+)(RenderImage);

@@ -13,12 +13,20 @@ export const changeCurrentTag = tag => {
   }
 }
 
-export const addImageToState = ({url, name, tag_name}) => {
+export const addImageToState = ({url, name, votecount, tag_name}) => {
   return {
     type: 'ADD_IMAGE_TO_STATE',
     url: url,
     name: name,
+    votecount: votecount,
     tag_name: tag_name
+  }
+}
+
+export const upvoteImage = (id) => {
+  return {
+    type: 'UPVOTE_IMAGE',
+    id: id
   }
 }
 
