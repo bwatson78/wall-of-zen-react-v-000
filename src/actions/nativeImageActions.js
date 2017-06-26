@@ -18,7 +18,7 @@ export const addImageToState = ({url, name, votecount, tag_name}) => {
     type: 'ADD_IMAGE_TO_STATE',
     url: url,
     name: name,
-    votecount: votecount,
+    votecount: 0,
     tag_name: tag_name
   }
 }

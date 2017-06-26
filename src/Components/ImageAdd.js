@@ -40,6 +40,7 @@ class ImageAdd extends Component {
       body: JSON.stringify({
         url: this.props.image.link,
         name: this.props.image.title,
+        votecount: 0,
         tags_attributes: {tag_name: this.props.googImage.tagText.split(' ')}
       })
     }
