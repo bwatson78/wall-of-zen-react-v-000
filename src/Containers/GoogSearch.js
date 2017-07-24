@@ -14,7 +14,7 @@ class GoogSearch extends Component {
 
   processSubmit(event) {
     event.preventDefault();
-    fetch(`https://www.googleapis.com/customsearch/v1?q=${this.props.googImage.searchText}&key=${googKey}&cx=${googCX}&searchType=image`)
+    fetch(`https://www.googleapis.com/customsearch/v1?q=${this.props.googImage.searchText}&key=${googKey}&cx=${googCX}&searchType=image&imgSize=xxlarge`)
       .then(res => res.json())
       .then((response) => this.props.receiveGoogImages(response))
   }
