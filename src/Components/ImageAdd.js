@@ -64,6 +64,7 @@ class ImageAdd extends Component {
           <input
             type='text'
             placeholder='Type Tags Here!'
+            size="15"
             onChange={(event) => this.processChange(event)} />
           <input type='submit'/>
         </form>

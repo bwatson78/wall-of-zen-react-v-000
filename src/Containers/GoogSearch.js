@@ -32,6 +32,7 @@ class GoogSearch extends Component {
             type='text'
             value={this.props.googImage.searchText}
             placeholder="Enter Search Value Here"
+            size="25"
             onChange={(event) => this.processChange(event)}/>
         </form>
         {this.props.children}
