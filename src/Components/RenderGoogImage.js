@@ -10,8 +10,8 @@ class RenderGoogImage extends Component {
 
   render() {
     return (
-      <div className='google-image'>
-        <img
+      <div>
+        <img className="searched-image"
           key={this.props.image.title}
           src={this.props.image.link}
           alt={this.props.image.title}

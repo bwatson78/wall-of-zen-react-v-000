@@ -58,7 +58,7 @@ class ImageAdd extends Component {
     return (
       <div className='google-image-for-adding'>
         <h3>Do you want to add "{this.props.image.title}" to your Wall?</h3>
-        <img src={this.props.image.link} alt={this.props.image.title} width="100"/>
+        <img className="add-image" src={this.props.image.link} alt={this.props.image.title} width="100"/>
         <form onSubmit={(event) => this.processSubmit(event)}>
           <p>Add tags below and click submit when done!</p>
           <input
