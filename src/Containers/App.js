@@ -19,7 +19,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <h2>Wall Of Zen</h2>
+          <h1>Wall Of Zen</h1>
         </div>
         <NavBar />
         {this.props.children}
