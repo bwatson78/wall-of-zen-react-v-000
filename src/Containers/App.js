@@ -18,7 +18,7 @@ class App extends Component {
   render () {
     return (
       <div className="App">
-        <div className="App-header">
+        <div className="page-header">
           <h1>Wall Of Zen</h1>
         </div>
         <NavBar />

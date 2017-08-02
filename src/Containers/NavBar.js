@@ -4,10 +4,10 @@ import {Link} from 'react-router';
 const NavBar = () => {
   return (
     <div>
-      <ul>
-        <li><Link to="/">Wall</Link></li>
-        <li><Link to='/search'>Search For Images</Link></li>
-        <li><Link to='/tags'>Tags</Link></li>
+      <ul className="nav nav-tabs">
+        <li role="presentation" className="active"><Link to="/">Wall</Link></li>
+        <li role="presentation" ><Link to='/search'>Search For Images</Link></li>
+        <li role="presentation" ><Link to='/tags'>Tags</Link></li>
       </ul>
     </div>
   )
