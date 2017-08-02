@@ -27,14 +27,20 @@ class GoogSearch extends Component {
   render() {
     return (
       <div className="google-form">
-        <form onSubmit={(event) => this.processSubmit(event)}>
-          <input
-            type='text'
-            value={this.props.googImage.searchText}
-            placeholder="Enter Search Value Here"
-            size="25"
-            onChange={(event) => this.processChange(event)}/>
-        </form>
+        <div className="input-group">
+          <span className="input-group-addon">
+            Search Term
+          </span>
+          <form onSubmit={(event) => this.processSubmit(event)}>
+            <input
+              className="form-control"
+              type='text'
+              value={this.props.googImage.searchText}
+              placeholder="Enter Search Value Here"
+              size="25"
+              onChange={(event) => this.processChange(event)}/>
+          </form>
+        </div>
         {this.props.children}
         <GoogImageList images={this.props.googImage.searchImages} />
       </div>
