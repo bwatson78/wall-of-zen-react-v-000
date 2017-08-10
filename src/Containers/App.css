@@ -1,10 +1,9 @@
 
 .google-image-for-adding {
-  background: linear-gradient(to bottom right, #000000, #2F4F4F);
+  background: gray;
   border-color: blue;
   border-width: medium;
   width: 500px;
-  color: #3b73ff;
   text-align: center;
   text-shadow: none;
 }
