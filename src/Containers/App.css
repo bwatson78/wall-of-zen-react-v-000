@@ -15,3 +15,7 @@
 a:hover {
   color: black;
 }
+
+#tags-dropdown {
+  margin: 5px;
+}
