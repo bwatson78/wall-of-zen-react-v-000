@@ -16,7 +16,7 @@ class GoogImageList extends Component {
 
   render() {
     return (
-      <div key="list" className='container-fluid'>
+      <div key="list" className='row'>
         {this.props.images ?
           this.props.images.map((image, index) =>
             <div>

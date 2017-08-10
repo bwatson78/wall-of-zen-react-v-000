@@ -1,13 +1,18 @@
 import React from 'react';
+import {DropdownButton, MenuItem} from 'react-bootstrap';
 
 const Filter = (props) => {
   return (
-      <select onChange={event => props.changeCurrentTag(event.target.value)} defaultValue='all'>
-        <option value='all'>All</option>
-        {props.tags.map(tag =>
-          <option key={tag} value={tag}>{tag}</option>
-        )}
-      </select>
+    <div className="input-group">
+      <div className="input-group-btn">
+        <DropdownButton className="dropdown-menu" onSelect={event => props.changeCurrentTag(event.target.eventKey)}>
+          <MenuItem eventKey="">All</MenuItem>
+          {props.tags.map(tag =>
+            <MenuItem eventKey={tag}>{tag}</MenuItem>
+          )}
+        </DropdownButton>
+      </div>
+    </div>
     );
   }
   Filter.defaultProps = {
